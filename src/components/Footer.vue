@@ -17,13 +17,13 @@
 			<!-- Social Media Links -->
 			<div class="flex gap-5 mt-5">
 				<a href="#" class="text-black text-lg">
-					<FontAwesomeIcon icon={facebook} />
+					<FontAwesomeIcon :icon="faFacebook" />
 				</a>
 				<a href="#" class="text-black text-lg">
-					<FontAwesomeIcon icon={instagram} />
+					<FontAwesomeIcon :icon="faInstagram" />
 				</a>
 				<a href="#" class="text-black text-lg">
-					<FontAwesomeIcon icon={twitter} />
+					<FontAwesomeIcon :icon="faTwitter" />
 				</a>
 			</div>
 		</div>
@@ -31,5 +31,19 @@
 </template>
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+export default {
+	components: {
+		FontAwesomeIcon
+	},
+	data() {
+		return {
+			faFacebook,
+			faInstagram,
+			faTwitter
+		}
+	}
+}
 
 </script>

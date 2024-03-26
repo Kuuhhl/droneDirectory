@@ -12,14 +12,15 @@
 					</div>
 					<div class="flex gap-2.5 mt-12 text-lg text-center max-md:flex-wrap max-md:mt-10">
 						<div class="flex flex-col justify-center text-white">
-							<div class="justify-center px-14 py-6 bg-black rounded-md max-md:px-5">
+							<RouterLink to="/map" class="justify-center px-14 py-6 bg-black rounded-md max-md:px-5">
 								Launch Map
-							</div>
+							</RouterLink>
 						</div>
 						<div class="flex flex-col justify-center text-black leading-[135%]">
-							<div class="justify-center px-12 py-6 rounded-md border border-black border-solid max-md:px-5">
+							<RouterLink to="/gallery"
+								class="justify-center px-12 py-6 rounded-md border border-black border-solid max-md:px-5">
 								View Gallery
-							</div>
+							</RouterLink>
 						</div>
 					</div>
 				</div>

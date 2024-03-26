@@ -3,13 +3,14 @@
 		<div class="flex justify-between items-center p-3 max-md:flex-wrap">
 			<!-- Left part: Logo and Navigation Links -->
 			<div class="flex gap-5 items-center">
-				<a class="text-2xl font-bold uppercase">DD</a>
-				<a v-for="link in linksLeft" :key="link.text" :href="link.link">{{ link.text }}</a>
+				<RouterLink to="/" class="text-2xl font-bold uppercase">DD</RouterLink>
+				<RouterLink v-for="link in linksLeft" :key="link.text" :to="link.link">{{ link.text }}
+				</RouterLink>
 			</div>
 			<!-- Right part: Right Links and Button -->
 			<div class="flex items-center gap-5">
-				<a v-for="link in linksRight" :key="link.text" :href="link.link">{{ link.text }}</a>
-				<a :href="button.link" class="px-8 py-3 bg-black text-white rounded-md">{{ button.text }}</a>
+				<RouterLink v-for="link in linksRight" :key="link.text" :to="link.link">{{ link.text }}</RouterLink>
+				<RouterLink :to="button.link" class="px-8 py-3 bg-black text-white rounded-md">{{ button.text }}</RouterLink>
 			</div>
 		</div>
 	</nav>
