@@ -3,6 +3,7 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { CustomControl, GoogleMap, InfoWindow, Marker, MarkerCluster, Circle } from 'vue3-google-map';
 import DroneSpotInfo from '../components/DroneSpotInfo.vue';
 import Navbar from '../components/Navbar.vue';
+import Warning from '../components/Warning.vue';
 
 // Initialize a ref for airports data
 const airports = ref([]);
@@ -13,6 +14,17 @@ const locationFound = ref(false);
 const zoomValue = ref(6);
 const mapBounds = ref(null)
 const selectedDroneSpot = ref(null);
+const isWarningOpened = ref(false);
+const warningCoordinates = ref({});
+
+const handleOpenWarning = (coordinates) => {
+  warningCoordinates.value = coordinates;
+  isWarningOpened.value = true;
+};
+
+const handleCloseWarning = () => {
+  isWarningOpened.value = false;
+};
 
 const linksLeft = [
   {
@@ -155,6 +167,8 @@ const currentLocationMarkerOptions = {
 </script>
 
 <template>
+  <Warning v-if="isWarningOpened" :coordinates="warningCoordinates" @closeWarning="handleCloseWarning" />
+
   <Navbar :linksLeft=linksLeft :button=button :linksRight=linksRight />
   <GoogleMap api-key="AIzaSyD1uFtiEOeXq5pzdiKT3QHzSFpe6L2v1lo" style="width: 100%; height: 90vh" :center="center"
     ref="googleMapRef" :zoom="zoomValue" :options="{
@@ -177,7 +191,8 @@ const currentLocationMarkerOptions = {
         :options="droneSpotMarkerOptions(droneSpot)" />
     </MarkerCluster>
     <CustomControl position="RIGHT_CENTER">
-      <DroneSpotInfo v-if="selectedDroneSpot" :droneSpot="selectedDroneSpot.value" @clear="selectedDroneSpot = null" />
+      <DroneSpotInfo v-if="selectedDroneSpot" :droneSpot="selectedDroneSpot" @clear="selectedDroneSpot = null"
+        @openWarning="handleOpenWarning" />
     </CustomControl>
   </GoogleMap>
 </template>
