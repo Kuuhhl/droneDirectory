@@ -11,8 +11,10 @@
 			<!-- Contact Info -->
 			<div class="mt-10 text-center">
 				<div class="text-xl text-black mb-1">Contact Us</div>
-				<p class="text-black">Email: contact@droneimagery.com</p>
-				<p class="text-black">Phone: (123) 456-7890</p>
+				<a href="mailto:contact@dronedirectory.com" target="_blank" class="text-black">Email:
+					contact@dronedirectory.com</a>
+				<br />
+				<a href="tel:+441931319129" class="text-black">Phone: +44 1931-319129</a>
 			</div>
 			<!-- Social Media Links -->
 			<div class="flex gap-5 mt-5">

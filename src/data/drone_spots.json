@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Lake District National Park",
+    "coordinates": {"lat": 54.4609, "lng": -3.0886},
+    "description": "A stunning landscape of high fells and deep glacial lakes. Ideal for capturing dramatic scenery and water reflections.",
+    "rating": 4.8,
+    "want_to_go_there": true,
+    "image_sources": [
+      "https://exampleimage1.com",
+      "https://exampleimage2.com"
+    ],
+    "comments": [
+      "Breathtaking views, a must-visit for drone enthusiasts.",
+      "Be mindful of weather conditions, as they can change rapidly."
+    ]
+  },
+  {
+    "name": "Giant's Causeway",
+    "coordinates": {"lat": 55.2408, "lng": -6.5116},
+    "description": "Famous for its interlocking basalt columns, the result of an ancient volcanic fissure eruption.",
+    "rating": 4.9,
+    "want_to_go_there": true,
+    "image_sources": [
+      "https://exampleimage3.com",
+      "https://exampleimage4.com"
+    ],
+    "comments": [
+      "The hexagonal columns make for an incredible aerial shot.",
+      "Early morning or late evening offers the best light for photos."
+    ]
+  },
+  {
+    "name": "Snowdonia National Park",
+    "coordinates": {"lat": 52.9180, "lng": -3.8910},
+    "description": "Home to the highest mountain in Wales, Snowdonia boasts rugged landscapes and picturesque villages.",
+    "rating": 4.7,
+    "want_to_go_there": false,
+    "image_sources": [
+      "https://exampleimage5.com",
+      "https://exampleimage6.com"
+    ],
+    "comments": [
+      "A diverse landscape offering everything from mountain peaks to sandy beaches.",
+      "The train ride to the summit of Snowdon offers stunning views if you prefer not to hike."
+    ]
+  },
+  {
+    "name": "The Cotswolds",
+    "coordinates": {"lat": 51.7457, "lng": -1.7134},
+    "description": "An area of outstanding natural beauty known for its rolling hills, historic villages, and stone-built cottages.",
+    "rating": 4.8,
+    "want_to_go_there": true,
+    "image_sources": [
+      "https://exampleimage7.com",
+      "https://exampleimage8.com"
+    ],
+    "comments": [
+      "The quaint towns and stunning landscapes are perfect for leisurely drives and photography.",
+      "Don't miss the lavender fields in full bloom during summer."
+    ]
+  },
+  {
+    "name": "Stonehenge",
+    "coordinates": {"lat": 51.1789, "lng": -1.8262},
+    "description": "One of the wonders of the world and the best-known prehistoric monument in Europe.",
+    "rating": 4.7,
+    "want_to_go_there": true,
+    "image_sources": [
+      "https://exampleimage9.com",
+      "https://exampleimage10.com"
+    ],
+    "comments": [
+      "Visiting at dawn or dusk offers a magical experience with fewer crowds.",
+      "Consider the seasonal solstices for a truly unique visit."
+    ]
+  },
+  {
+    "name": "Edinburgh Castle",
+    "coordinates": {"lat": 55.9486, "lng": -3.1999},
+    "description": "An iconic Scottish landmark, the castle dominates the skyline of Edinburgh from its position on Castle Rock.",
+    "rating": 4.8,
+    "want_to_go_there": true,
+    "image_sources": [
+      "https://exampleimage11.com",
+      "https://exampleimage12.com"
+    ],
+    "comments": [
+      "Offers breathtaking views of the city and a rich history to explore.",
+      "The Edinburgh Military Tattoo, held in August, is a spectacular event not to be missed."
+    ]
+  },
+  {
+    "name": "The Jurassic Coast",
+    "coordinates": {"lat": 50.7155, "lng": -2.9354},
+    "description": "England's only natural World Heritage Site, famous for its fossils and dramatic coastal formations.",
+    "rating": 4.9,
+    "want_to_go_there": false,
+    "image_sources": [
+      "https://exampleimage13.com",
+      "https://exampleimage14.com"
+    ],
+    "comments": [
+      "Ideal for hiking, fossil hunting, and enjoying the seaside towns.",
+      "The natural arch at Durdle Door is a must-see landmark."
+    ]
+  }
+]
