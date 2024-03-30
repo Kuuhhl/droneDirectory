@@ -1,6 +1,9 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref, nextTick, onMounted, computed, watch, watchEffect } from 'vue';
 import { CustomControl, GoogleMap, InfoWindow, Marker, MarkerCluster, Circle } from 'vue3-google-map';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import DroneSpotInfo from '../components/DroneSpotInfo.vue';
 import Navbar from '../components/Navbar.vue';
 import Warning from '../components/Warning.vue';
@@ -16,6 +19,8 @@ const mapBounds = ref(null)
 const selectedDroneSpot = ref(null);
 const isWarningOpened = ref(false);
 const warningCoordinates = ref({});
+
+library.add(faLocationCrosshairs);
 
 const handleOpenWarning = (coordinates) => {
   warningCoordinates.value = coordinates;
@@ -52,6 +57,14 @@ const button = {
   link: '/map',
 }
 
+
+watchEffect(() => {
+  if (selectedDroneSpot.value && googleMapRef.value && googleMapRef.value.map) {
+    nextTick(() => {
+      googleMapRef.value.map.setCenter(googleMapRef.value.map.getCenter());
+    });
+  }
+});
 
 const showDroneSpotInfo = (name) => {
   const spot = droneSpots.value.find(droneSpot => droneSpot.name === name);
@@ -99,8 +112,8 @@ onMounted(async () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       position => {
-        center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
         locationFound.value = true;
+        center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
         zoomValue.value = 8;
       },
       () => console.error("Geolocation access was denied or not available.")
@@ -142,6 +155,14 @@ const airportMarkerOptions = airport => ({
 
 const droneSpotMarkerOptions = droneSpot => ({
   position: { lat: droneSpot.coordinates['lat'], lng: droneSpot.coordinates['lng'] },
+  icon: {
+    path: "M8.293 4.293A1 1 0 0 1 9 4h6a1 1 0 0 1 .707.293L17.414 6H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.586l1.707-1.707zM9.414 6L7.707 7.707A1 1 0 0 1 7 8H4v10h16V8h-3a1 1 0 0 1-.707-.293L14.586 6H9.414zM12 10.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0z",
+    scale: 2,
+    fillColor: '#0047AB',
+    fillOpacity: 1,
+    strokeColor: '#0047AB',
+    strokeWeight: 0.5,
+  },
 });
 
 const circleOptions = airport => ({
@@ -171,23 +192,26 @@ const currentLocationMarkerOptions = {
 
   <Navbar :linksLeft=linksLeft :button=button :linksRight=linksRight />
   <GoogleMap api-key="AIzaSyD1uFtiEOeXq5pzdiKT3QHzSFpe6L2v1lo" style="width: 100%; height: 90vh" :center="center"
-    ref="googleMapRef" :zoom="zoomValue" :options="{
-    streetViewControl: false,
-    restriction: { latLngBounds: { north: 61.0, south: 49.0, west: -10.0, east: 2.0 }, strictBounds: true }
-  }">
+    ref="googleMapRef" :zoom="zoomValue" :streetViewControl="false" :restriction="{
+    latLngBounds: {
+      north: 61.0, south:
+        49.0, west: -10.0, east: 2.0
+    }, strictBounds: true
+  }
+    " gestureHandling="greedy">
     <template v-if="zoomValue >= 12">
-      <Marker v-for="       airport       in       visibleAirports       " :key="airport.id"
+      <Marker v-for="        airport        in        visibleAirports        " :key="airport.id"
         :options="airportMarkerOptions(airport)">
         <InfoWindow :options="{ content: airport.name }" />
       </Marker>
     </template>
-    <template v-if="zoomValue >= 8">
-      <Circle v-for="       airport       in       visibleAirports       " :key="airport.id"
+    <template v-if="zoomValue >= 12">
+      <Circle v-for="        airport        in        visibleAirports        " :key="airport.id"
         :options="circleOptions(airport)" />
     </template>
     <Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
     <MarkerCluster>
-      <Marker @click="showDroneSpotInfo(droneSpot.name)" v-for="droneSpot in  droneSpots " :key="droneSpot.id"
+      <Marker @click="showDroneSpotInfo(droneSpot.name)" v-for=" droneSpot  in   droneSpots  " :key="droneSpot.id"
         :options="droneSpotMarkerOptions(droneSpot)" />
     </MarkerCluster>
     <CustomControl position="RIGHT_CENTER">
