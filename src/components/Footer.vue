@@ -1,5 +1,5 @@
 <template>
-	<footer class="bg-zinc-100 mt-20">
+	<footer class="bg-zinc-100">
 		<div class="flex flex-col justify-center items-center px-5 pt-10 pb-5">
 			<!-- About Section -->
 			<div class="text-center">

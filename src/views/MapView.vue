@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import DroneSpotInfo from '../components/DroneSpotInfo.vue';
-import Navbar from '../components/Navbar.vue';
 import Warning from '../components/Warning.vue';
 
 // Initialize a ref for airports data
@@ -30,33 +29,6 @@ const handleOpenWarning = (coordinates) => {
 const handleCloseWarning = () => {
   isWarningOpened.value = false;
 };
-
-const linksLeft = [
-  {
-    text: 'Locations',
-    link: '/locations',
-  },
-  {
-    text: 'Gallery',
-    link: '/gallery',
-  }
-]
-const linksRight = [
-  {
-    text: 'Add a location',
-    link: '/locations/contribute',
-  },
-  {
-    text: 'Login / Sign Up',
-    link: '/login',
-  }
-]
-
-const button = {
-  text: 'Launch Map',
-  link: '/map',
-}
-
 
 watchEffect(() => {
   if (selectedDroneSpot.value && googleMapRef.value && googleMapRef.value.map) {

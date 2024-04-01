@@ -21,14 +21,18 @@
 				<routerLink to="#" class="mt-4 text-xs">Read all Reviews</routerLink>
 			</template>
 			<div class="flex justify-between px-4 mt-16 text-base">
-				<div class="px-6 py-3 bg-black rounded-md text-white flex items-center">
-					<font-awesome-icon :icon="['fas', 'heart']" class="w-6" />
-					<span class="ml-2">Want to Go</span>
-				</div>
-				<div class="px-4 py-3 rounded-md border flex items-center">
-					<font-awesome-icon :icon="['fas', 'check']" class="w-6" />
-					<span class="ml-2">Mark as Visited</span>
-				</div>
+				<button class="px-4 py-3 bg-black rounded-md text-white flex items-center" @click="toggleWantToGo">
+					<font-awesome-icon v-if="!props.droneSpot.want_to_go" :icon="['fas', 'heart']" class="w-6" />
+					<font-awesome-icon v-if="props.droneSpot.want_to_go" :icon="['fas', 'heart-broken']" class="w-6" />
+					<span v-if="props.droneSpot.want_to_go" class="ml-2">Don't want to Go</span>
+					<span v-if="!props.droneSpot.want_to_go" class="ml-2">Want to Go</span>
+				</button>
+				<button class="px-4 py-3 rounded-md border flex items-center" @click="toggleVisited">
+					<font-awesome-icon v-if="!props.droneSpot.visited" :icon="['fas', 'check']" class="w-6" />
+					<font-awesome-icon v-if="props.droneSpot.visited" :icon="['fas', 'xmark']" class="w-6" />
+					<span v-if="!props.droneSpot.visited" class="ml-2">Mark as Visited</span>
+					<span v-if="props.droneSpot.visited" class="ml-2">Unmark as Visited</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -36,17 +40,24 @@
 
 <script setup>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faRoute, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faRoute, faHeart, faCheck, faHeartBroken, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Carousel from './Carousel.vue'
 
-library.add(faRoute, faHeart, faCheck)
+library.add(faRoute, faHeart, faCheck, faHeartBroken, faXmark)
 
 const props = defineProps(['droneSpot'])
 const emit = defineEmits(['clear', 'openWarning'])
 
 const openWarning = coordinates => {
 	emit('openWarning', coordinates)
+}
+const toggleWantToGo = () => {
+	props.droneSpot.want_to_go = !props.droneSpot.want_to_go
+}
+const toggleVisited = () => {
+	props.droneSpot.visited = !props.droneSpot.visited
+	props.droneSpot.visitors = props.droneSpot.visited ? props.droneSpot.visitors + 1 : props.droneSpot.visitors - 1
 }
 
 </script>
