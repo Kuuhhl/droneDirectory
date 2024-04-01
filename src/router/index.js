@@ -15,19 +15,13 @@ const router = createRouter({
       component: () => import('../views/MapView.vue')
     },
     {
-      path: '/locations',
-      name: 'locations',
-      component: () => import('../views/LocationsView.vue')
-    },
-
-    {
-      path: '/location/:id',
+      path: '/map/:id',
       name: 'location',
-      component: () => import('../views/LocationView.vue'),
+      component: () => import('../views/MapView.vue'),
       props: true
     },
     {
-      path: '/location/contribute',
+      path: '/contribute',
       name: 'contribute',
       component: () => import('../views/ContributeView.vue')
     },
@@ -40,6 +34,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: () => import('../views/GalleryView.vue')
     }
   ]
 })

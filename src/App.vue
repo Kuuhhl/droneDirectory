@@ -6,11 +6,10 @@ import Footer from './components/Footer.vue'
 
 const defaultNavbarProps = {
   linksLeft: [
-    { text: 'Locations', link: '/locations' },
     { text: 'Gallery', link: '/gallery' }
   ],
   linksRight: [
-    { text: 'Add a location', link: '/locations/contribute' },
+    { text: 'Add a location', link: '/contribute' },
     { text: 'Login / Sign Up', link: '/login' }
   ],
   button: { text: 'Launch Map', link: '/map' },
@@ -23,7 +22,7 @@ const navbarProps = computed(() => {
       linksRight: [
         { text: 'Login / Sign Up', link: '/login' }
       ],
-      button: { text: 'Add a Location', link: '/locations/contribute' },
+      button: { text: 'Add a Location', link: '/contribute' },
     };
   }
   return defaultNavbarProps;

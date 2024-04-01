@@ -9,25 +9,23 @@
 			</template>
 
 			<template v-slot:content>
-
-				<div class="flex gap-5 justify-center">
-					<div class="guideline flex-1 min-w-0">
+				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center justify-items-center">
+					<div class="guideline">
 						<div class="bg-black aspect-square h-80"></div>
 						<h3 class="mt-10 text-2xl leading-8">Respect other’s privacy</h3>
 						<p class="mt-9 text-sm leading-5">
 							We’re sure you wouldn’t like a drone buzzing outside your apartment window - keep it that way for others
-							as
-							well.
+							as well.
 						</p>
 					</div>
-					<div class="guideline flex-1 min-w-0">
+					<div class="guideline">
 						<div class="bg-black aspect-square h-80"></div>
 						<h3 class="mt-10 text-2xl leading-8">Do not fly over restricted areas</h3>
 						<p class="mt-8 text-sm leading-5">
 							This especially includes airports, airfields, military bases, and other restricted areas.
 						</p>
 					</div>
-					<div class="guideline flex-1 min-w-0">
+					<div class="guideline">
 						<div class="bg-black aspect-square h-80"></div>
 						<h3 class="mt-10 text-2xl leading-8">Follow the CAA Regulations</h3>
 						<p class="mt-8 text-sm leading-5">
@@ -40,7 +38,7 @@
 			</template>
 
 			<template v-slot:footer>
-				<div class="flex gap-2.5 justify-between px-8">
+				<div class="flex flex-col md:flex-row gap-2.5 justify-between px-8">
 					<button @click="acceptWarning"
 						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md">
 						Accept & Send Route to Phone
@@ -79,7 +77,6 @@
 				</div>
 			</template>
 			<template v-slot:footer>
-
 				<div class="flex gap-2.5 justify-between px-8">
 					<button @click="submitPhoneNumber"
 						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md">
@@ -87,7 +84,6 @@
 						Send Route to Phone
 					</button>
 				</div>
-
 			</template>
 		</Modal>
 	</template>

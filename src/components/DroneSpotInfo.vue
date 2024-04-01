@@ -20,14 +20,15 @@
 					{{ props.droneSpot.comments[0].comment }} <br />~ {{ props.droneSpot.comments[0].name }}</div>
 				<routerLink to="#" class="mt-4 text-xs">Read all Reviews</routerLink>
 			</template>
-			<div class="flex justify-between px-4 mt-16 text-base">
-				<button class="px-4 py-3 bg-black rounded-md text-white flex items-center" @click="toggleWantToGo">
+			<div class="flex flex-col md:flex-row justify-between px-4 mt-16 text-base">
+				<button class="px-4 py-3 bg-black rounded-md text-white flex items-center justify-center"
+					@click="toggleWantToGo">
 					<font-awesome-icon v-if="!props.droneSpot.want_to_go" :icon="['fas', 'heart']" class="w-6" />
 					<font-awesome-icon v-if="props.droneSpot.want_to_go" :icon="['fas', 'heart-broken']" class="w-6" />
 					<span v-if="props.droneSpot.want_to_go" class="ml-2">Don't want to Go</span>
 					<span v-if="!props.droneSpot.want_to_go" class="ml-2">Want to Go</span>
 				</button>
-				<button class="px-4 py-3 rounded-md border flex items-center" @click="toggleVisited">
+				<button class="px-4 py-3 rounded-md border flex items-center justify-center" @click="toggleVisited">
 					<font-awesome-icon v-if="!props.droneSpot.visited" :icon="['fas', 'check']" class="w-6" />
 					<font-awesome-icon v-if="props.droneSpot.visited" :icon="['fas', 'xmark']" class="w-6" />
 					<span v-if="!props.droneSpot.visited" class="ml-2">Mark as Visited</span>

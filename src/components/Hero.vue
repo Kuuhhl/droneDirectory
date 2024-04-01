@@ -1,3 +1,7 @@
+<script setup>
+import Map from './Map.vue'
+</script>
+
 <template>
 	<div class="pl-20 bg-zinc-100 max-md:pl-5">
 		<div class="flex gap-5 max-md:flex-col max-md:gap-0">
@@ -25,9 +29,22 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="flex flex-col ml-5 w-[59%] max-md:ml-0 max-md:w-full">
-				<img loading="lazy" srcSet="..." class="grow w-full aspect-[1.33] max-md:mt-10 max-md:max-w-full" />
+				<RouterLink to="/map" class="relative group">
+					<div class="max-w-full">
+						<Map class="pointer-events-none grayscale brightness-50" :demo="true" />
+					</div>
+					<div
+						class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex justify-center items-center opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+						<button class="z-50 text-white py-6 rounded-md px-12 border border-white border-solid max-md:px-5">
+							Launch
+							Map
+						</button>
+					</div>
+				</RouterLink>
 			</div>
+
 		</div>
 	</div>
 </template>
