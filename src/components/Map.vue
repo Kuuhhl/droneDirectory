@@ -8,17 +8,29 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import DroneSpotInfo from './DroneSpotInfo.vue';
 const props = defineProps({
 	demo: { type: Boolean, required: false, default: false },
-	id: { type: String, required: false, default: null }
+	id: { type: String, required: false, default: null },
+	center: { type: Object, required: false, default: { lat: 52.6369, lng: -1.1398 } },
+	restriction: {
+		type: Object, required: false, default: {
+			latLngBounds: {
+				north: 61.0, south:
+					49.0, west: -10.0, east: 2.0
+			}, strictBounds: true
+		}
+	},
+	zoomValue: { type: Number, required: false, default: 5 },
+	markCenter: { type: Boolean, required: false, default: false }
 });
 const emit = defineEmits(['openWarning']);
 const handleOpenWarning = (coordinates) => { emit('openWarning', coordinates) }
 // Initialize a ref for airports data
 const airports = ref([]);
+const restriction = ref(props.restriction)
 const droneSpots = ref([]);
 const googleMapRef = ref(null);
-const center = ref({ lat: 52.6369, lng: -1.1398 });
+const center = ref(props.center);
 const locationFound = ref(false);
-const zoomValue = ref(5);
+const zoomValue = ref(props.zoomValue);
 const mapBounds = ref(null)
 const selectedDroneSpot = ref(null);
 
@@ -170,13 +182,8 @@ const currentLocationMarkerOptions = {
 <template>
 	<GoogleMap api-key="AIzaSyD1uFtiEOeXq5pzdiKT3QHzSFpe6L2v1lo"
 		:style="'width: 100%; height: ' + (props.demo ? '50vh' : '90vh')" :center="center" ref="googleMapRef"
-		:zoom="zoomValue" :streetViewControl="false" :restriction="{
-			latLngBounds: {
-				north: 61.0, south:
-					49.0, west: -10.0, east: 2.0
-			}, strictBounds: true
-		}
-			" :disableDefaultUi="props.demo" :gestureHandling="props.demo ? 'none' : 'greedy'" :clickableIcons="!props.demo">
+		:zoom="zoomValue" :streetViewControl="false" :restriction="restriction" :disableDefaultUi="props.demo"
+		:gestureHandling="props.demo ? 'none' : 'greedy'" :clickableIcons="!props.demo">
 		<template v-if="zoomValue >= 12">
 			<Marker v-for="        airport        in        visibleAirports        " :key="airport.id"
 				:options="airportMarkerOptions(airport)">
@@ -187,6 +194,7 @@ const currentLocationMarkerOptions = {
 			<Circle v-for="        airport        in        visibleAirports        " :key="airport.id"
 				:options="circleOptions(airport)" />
 		</template>
+		<Marker v-if="props.markCenter" :options="{ position: center }" />
 		<Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
 		<MarkerCluster>
 			<Marker @click="showDroneSpotInfo(droneSpot.name)" v-for=" droneSpot  in   droneSpots  " :key="droneSpot.id"
