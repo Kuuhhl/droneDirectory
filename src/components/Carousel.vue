@@ -37,7 +37,7 @@ const emit = defineEmits(['clear'])
 const currentIndex = ref(0)
 
 const currentImageSource = computed(() => {
-	return `/src/assets/images/${props.imageSources[currentIndex.value]}`
+	return props.imageSources[currentIndex.value]
 })
 
 function setCurrentIndex(index) {

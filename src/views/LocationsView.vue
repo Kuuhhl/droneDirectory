@@ -1,3 +1,0 @@
-<template>
-  locations view
-</template

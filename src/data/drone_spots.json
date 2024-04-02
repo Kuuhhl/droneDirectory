@@ -7,7 +7,11 @@
     "rating": 4.8,
     "visitors": 231,
     "want_to_go_there": true,
-    "image_sources": ["lake-district/1.jpg", "lake-district/2.jpg", "lake-district/3.jpg"],
+    "image_sources": [
+      "/images/lake-district/1.jpg",
+      "/images/lake-district/2.jpg",
+      "/images/lake-district/3.jpg"
+    ],
     "comments": [
       { "name": "Emilio", "comment": "Breathtaking views, a must-visit for drone enthusiasts." },
       { "name": "Jack", "comment": "Be mindful of weather conditions, as they can change rapidly." }

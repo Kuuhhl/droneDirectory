@@ -15,10 +15,10 @@ onMounted(async () => {
   droneShots.value = droneSpotsData.default.flatMap((spot) =>
     spot.image_sources.map((imagePath) => ({
       imagePath,
-      location: spot.name
+      locationName: spot.name,
+      locationId: spot.id
     }))
   );
   droneShots.value = droneShots.value.slice(0, 3);
-  console.log(droneShots.value)
 })
 </script>

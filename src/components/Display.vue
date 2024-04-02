@@ -5,13 +5,9 @@
 			<div class="mt-9 text-lg leading-6 text-center text-black">
 				Take a look at our most recent drone shots!
 			</div>
-			<!-- container with grid setup -->
 			<div class="grid grid-cols-3 gap-5 mt-20">
-				<!-- card, using object-fill for image and setting aspect ratio -->
-				<div class="w-full" v-for="(droneShot, index) in droneShots" :key="index">
-					<img :src="`/src/assets/images/${droneShot.imagePath}`" :alt="'Drone shot at ' + droneShot.location"
-						class="w-full h-auto aspect-square object-cover">
-				</div>
+				<Image v-for="(droneShot, index) in props.droneShots" :key="index" :photo="droneShot.imagePath"
+					:spotName="droneShot.locationName" :spotId="droneShot.locationId" class="w-full" :isLarge="false" />
 			</div>
 		</div>
 
@@ -23,14 +19,8 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		droneShots: {
-			type: Array,
-			required: true
-		}
-	}
-}
+<script setup>
+import { defineProps } from 'vue';
+import Image from './Image.vue';
+const props = defineProps(['droneShots']);
 </script>
-

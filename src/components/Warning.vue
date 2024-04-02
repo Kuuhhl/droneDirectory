@@ -31,7 +31,7 @@
 						<p class="mt-8 text-sm leading-5">
 							In order to legally fly drones in the UK, you have to follow the CAA’s regulations. This can include
 							applying for insurance and / or license before flying.
-							<a href="#" class="underline">View Regulations</a>
+							<a href="https://www.caa.co.uk/uk-regulations/" class="underline">View Regulations</a>
 						</p>
 					</div>
 				</div>

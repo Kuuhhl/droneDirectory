@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import { ref, nextTick, onMounted, computed, watch, watchEffect } from 'vue';
 import { CustomControl, GoogleMap, InfoWindow, Marker, MarkerCluster, Circle } from 'vue3-google-map';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -10,7 +10,8 @@ const props = defineProps({
 	demo: { type: Boolean, required: false, default: false },
 	id: { type: String, required: false, default: null }
 });
-
+const emit = defineEmits(['openWarning']);
+const handleOpenWarning = (coordinates) => { emit('openWarning', coordinates) }
 // Initialize a ref for airports data
 const airports = ref([]);
 const droneSpots = ref([]);
@@ -193,7 +194,7 @@ const currentLocationMarkerOptions = {
 		</MarkerCluster>
 		<CustomControl position="RIGHT_CENTER">
 			<DroneSpotInfo v-if="selectedDroneSpot" :droneSpot="selectedDroneSpot" @clear="selectedDroneSpot = null"
-				@openWarning="emit('openWarning', event)" />
+				@openWarning="handleOpenWarning" />
 		</CustomControl>
 	</GoogleMap>
 </template>
