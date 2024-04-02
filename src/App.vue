@@ -34,7 +34,7 @@ const navbarProps = computed(() => {
     <header>
       <Navbar :linksLeft="navbarProps.linksLeft" :linksRight="navbarProps.linksRight" :button="navbarProps.button" />
     </header>
-    <main>
+    <main class="flex flex-col gap-5">
       <RouterView />
     </main>
     <Footer />
