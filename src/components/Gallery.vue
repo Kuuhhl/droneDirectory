@@ -9,6 +9,7 @@
 
 <script setup>
 import droneSpots from '../data/drone_spots.json';
+import seedrandom from 'seedrandom';
 import Image from './Image.vue';
 
 const isLargeImage = (index) => {
@@ -25,17 +26,20 @@ const aggregateImages = () => {
 	});
 	return allImages;
 };
+const shuffleArray = (array) => {
+	const shuffledArray = [...array]; // Create a copy of the original array
 
-const shuffleImages = (images) => {
-	const shuffled = [...images];
-	for (let i = shuffled.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // swap elements
+	// Create a deterministic random number generator with the provided seed
+	const rng = seedrandom('Seed');
+
+	// Fisher-Yates shuffle algorithm
+	for (let i = shuffledArray.length - 1; i > 0; i--) {
+		const j = Math.floor(rng() * (i + 1));
+		[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
 	}
-	return shuffled;
-};
 
+	return shuffledArray;
+}
 const allImages = aggregateImages();
-const shuffledAllImages = shuffleImages(allImages);
+const shuffledAllImages = shuffleArray(allImages);
 </script>
-
