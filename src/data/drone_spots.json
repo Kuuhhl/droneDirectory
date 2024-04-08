@@ -25,7 +25,11 @@
     "rating": 4.9,
     "visitors": 21,
     "want_to_go_there": true,
-    "image_sources": ["https://exampleimage3.com", "https://exampleimage4.com"],
+    "image_sources": [
+      "/images/giants-causeway/1.jpg",
+      "/images/giants-causeway/2.jpg",
+      "/images/giants-causeway/3.jpg"
+    ],
     "comments": [
       { "name": "John", "comment": "The hexagonal columns make for an incredible aerial shot." },
       {
@@ -42,7 +46,11 @@
     "rating": 4.7,
     "visitors": 124,
     "want_to_go_there": false,
-    "image_sources": ["https://exampleimage5.com", "https://exampleimage6.com"],
+    "image_sources": [
+      "/images/snowdonia/1.jpg",
+      "/images/snowdonia/2.jpg",
+      "/images/snowdonia/3.jpg"
+    ],
     "comments": [
       {
         "name": "Tom",
@@ -62,7 +70,11 @@
     "rating": 4.8,
     "visitors": 189,
     "want_to_go_there": true,
-    "image_sources": ["https://exampleimage7.com", "https://exampleimage8.com"],
+    "image_sources": [
+      "/images/cotswolds/1.jpg",
+      "/images/cotswolds/2.jpg",
+      "/images/cotswolds/3.jpg"
+    ],
     "comments": [
       {
         "name": "Linda",
@@ -79,7 +91,11 @@
     "rating": 4.7,
     "visitors": 156,
     "want_to_go_there": true,
-    "image_sources": ["https://exampleimage9.com", "https://exampleimage10.com"],
+    "image_sources": [
+      "/images/stonehenge/1.jpg",
+      "/images/stonehenge/2.jpg",
+      "/images/stonehenge/3.jpg"
+    ],
     "comments": [
       {
         "name": "Jane",
@@ -96,7 +112,11 @@
     "rating": 4.8,
     "visitors": 198,
     "want_to_go_there": true,
-    "image_sources": ["https://exampleimage11.com", "https://exampleimage12.com"],
+    "image_sources": [
+      "/images/edinburgh-castle/1.jpg",
+      "/images/edinburgh-castle/2.jpg",
+      "/images/edinburgh-castle/3.jpg"
+    ],
     "comments": [
       {
         "name": "Ruben",
@@ -116,7 +136,11 @@
     "rating": 4.9,
     "visitors": 32,
     "want_to_go_there": false,
-    "image_sources": ["https://exampleimage13.com", "https://exampleimage14.com"],
+    "image_sources": [
+      "/images/jurassic-coast/1.jpg",
+      "/images/jurassic-coast/2.jpg",
+      "/images/jurassic-coast/3.jpg"
+    ],
     "comments": [
       {
         "name": "Anasthasia",
