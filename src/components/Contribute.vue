@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col justify-center items-center px-5 gap-5 py-10 bg-zinc-100">
+	<div class="flex flex-col justify-center items-center px-5 gap-10 py-10 bg-zinc-100">
 		<div class="bg-white shadow-md rounded p-5">
 			<!-- Location Form -->
 			<form @submit.prevent="submitLocation" class="flex gap-5 justify-center items-center">
@@ -19,8 +19,6 @@
 		<!-- Map -->
 		<Map v-if="inputLocation" :key="mapKey" :markCenter="true" :demo="true" :zoomValue="10" :restriction="{}"
 			:center="{ lat: inputLocation.latitude, lng: inputLocation.longitude }" class="pointer-events-none bg-white  " />
-
-
 	</div>
 </template>
 <script>

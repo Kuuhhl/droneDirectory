@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import Map from '../components/Map.vue';
 import Warning from '../components/Warning.vue';
 
@@ -10,7 +10,6 @@ const props = defineProps({
   },
 });
 
-// Initialize a ref for airports data
 const isWarningOpened = ref(false);
 const warningCoordinates = ref({});
 
@@ -22,6 +21,7 @@ const handleOpenWarning = (coordinates) => {
 const handleCloseWarning = () => {
   isWarningOpened.value = false;
 };
+
 </script>
 
 <template>

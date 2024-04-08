@@ -21,7 +21,7 @@ const props = defineProps({
 	zoomValue: { type: Number, required: false, default: 5 },
 	markCenter: { type: Boolean, required: false, default: false }
 });
-const emit = defineEmits(['openWarning']);
+const emit = defineEmits(['openWarning', 'mapReady']);
 const handleOpenWarning = (coordinates) => { emit('openWarning', coordinates) }
 // Initialize a ref for airports data
 const airports = ref([]);
@@ -192,10 +192,15 @@ const currentLocationMarkerOptions = {
 		strokeWeight: 2
 	}
 };
+
+watch(() => googleMapRef.value?.ready, (ready) => {
+	if (!ready) return
+	emit('mapReady');
+})
 </script>
 
 <template>
-	<GoogleMap api-key="AIzaSyD1uFtiEOeXq5pzdiKT3QHzSFpe6L2v1lo"
+	<GoogleMap id="google-map" api-key="AIzaSyD1uFtiEOeXq5pzdiKT3QHzSFpe6L2v1lo"
 		:style="'width: 100%; height: ' + (props.demo ? '50vh' : '90vh')" :center="center" ref="googleMapRef"
 		:zoom="zoomValue" :streetViewControl="false" :restriction="restriction" :disableDefaultUi="props.demo"
 		:gestureHandling="props.demo ? 'none' : 'greedy'" :clickableIcons="!props.demo">

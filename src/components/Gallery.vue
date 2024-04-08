@@ -1,5 +1,5 @@
 <template>
-	<div class="gallery">
+	<div class="px-5">
 		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<Image v-for="(photo, index) in shuffledAllImages" :key="index" :photo="photo.image" :spotName="photo.spotName"
 				:spotId="photo.spotId" :isLarge="isLargeImage(index)" />

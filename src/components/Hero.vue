@@ -3,18 +3,18 @@ import Map from './Map.vue'
 </script>
 
 <template>
-	<div class="py-10 pl-20 bg-zinc-100 max-md:pl-5">
-		<div class="flex gap-5 max-md:flex-col max-md:gap-0">
+	<div class="py-10 px-10 max-md:py-5 pl-20 bg-zinc-100 max-md:px-5">
+		<div class="flex gap-10 max-md:flex-col max-md:gap-5">
 			<div class="flex flex-col w-[41%] max-md:ml-0 max-md:w-full">
-				<div class="flex flex-col self-stretch my-auto max-md:mt-10 max-md:max-w-full">
+				<div class="flex flex-col self-stretch my-auto max-md:mt-5 max-md:max-w-full">
 					<div class="text-2xl font-bold leading-8 text-black max-md:max-w-full">
 						Explore the British Isles
 					</div>
-					<div class="mt-12 text-xl leading-7 text-black max-md:mt-10 max-md:max-w-full">
+					<div class="mt-12 text-xl leading-7 text-black max-md:mt-5 max-md:max-w-full">
 						Our Community finds the coolest places for your drone to grab
 						amazing shots while you're here!
 					</div>
-					<div class="flex gap-2.5 mt-12 text-lg text-center max-md:flex-wrap max-md:mt-10">
+					<div class="flex gap-5 mt-12 text-lg text-center max-md:flex-wrap max-md:mt-5">
 						<div class="flex flex-col justify-center text-white">
 							<RouterLink to="/map" class="justify-center px-14 py-6 bg-black rounded-md max-md:px-5">
 								Launch Map

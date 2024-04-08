@@ -1,35 +1,18 @@
-# droneDirectory
+<div align="center">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
+  <img src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+<br />
+<p align="center">
+  <img src="public/logo.png" alt="Logo" width="120" height="120" style="border-radius:15%;">
 
-## Recommended IDE Setup
+  <h3 align="center">Drone Directory</h3>
+  <p align="center">A platform for finding and sharing the perfect drone spots in the British isles.</p>
+</p>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-bun install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-bun dev
-```
-
-### Compile and Minify for Production
-
-```sh
-bun build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-bun lint
-```
+<div align="center" style="display: flex; flex-direction: column;">
+  <a href="https://whiteboard.landmann.ph/">
+    <img src="https://img.shields.io/badge/Launch-00358a?style=for-the-badge&logo=google-chrome&logoColor=white">
+  </a>
+</div>

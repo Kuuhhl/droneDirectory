@@ -1,9 +1,11 @@
 <template>
-	<nav class="border-4 border-black bg-white">
+	<nav class="border-4 border-black bg-zinc-200">
 		<div class="md:flex md:justify-between items-center p-3">
 			<!-- Logo and Menu Toggle Button -->
 			<div class="flex items-center justify-between w-full md:w-auto">
-				<RouterLink to="/" class="text-2xl font-bold uppercase">DD</RouterLink>
+				<RouterLink to="/" class="text-2xl font-bold uppercase">
+					<img src="/logo.svg" class="h-10 w-10" alt="Logo" />
+				</RouterLink>
 				<button @click="isMenuOpen = !isMenuOpen" class="text-3xl md:hidden">
 					<font-awesome-icon :icon="['fas', 'fa-bars']"></font-awesome-icon>
 				</button>
