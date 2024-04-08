@@ -50,14 +50,20 @@ watchEffect(() => {
 	}
 });
 
-const showDroneSpotInfo = (name) => {
-	const spot = droneSpots.value.find(droneSpot => droneSpot.name === name);
+const showDroneSpotInfo = (key) => {
+	let spot = null;
+	if (key.name) {
+		spot = droneSpots.value.find(droneSpot => droneSpot.name === name);
+	}
+	else if (key.id) {
+		spot = droneSpots.value.find(droneSpot => droneSpot.id === key.id);
+	}
 	if (spot) {
 		selectedDroneSpot.value = spot;
-
+		center.value = { lat: spot.coordinates['lat'], lng: spot.coordinates['lng'] };
 	}
 	else {
-		console.error(`Drone spot with name ${name} not found.`);
+		console.error(`Drone spot with key ${key} not found.`);
 	}
 };
 
@@ -94,8 +100,7 @@ onMounted(async () => {
 		return
 	}
 	if (props.id) {
-		selectedDroneSpot.value = droneSpots.value.find(droneSpot => droneSpot.id === props.id);
-		center.value = { lat: selectedDroneSpot.value.coordinates['lat'], lng: selectedDroneSpot.value.coordinates['lng'] };
+		showDroneSpotInfo({ id: props.id });
 	}
 
 	const airportsData = await import('../data/uk_airports.json');
@@ -105,6 +110,15 @@ onMounted(async () => {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(
 			position => {
+				// check if position in the restrictions of the map
+				if (restriction.value && (position.coords.latitude < restriction.value.latLngBounds.south ||
+					position.coords.latitude > restriction.value.latLngBounds.north ||
+					position.coords.longitude < restriction.value.latLngBounds.west ||
+					position.coords.longitude > restriction.value.latLngBounds.east)) {
+					console.error("Geolocation is outside the map bounds.");
+					return;
+				}
+
 				locationFound.value = true;
 				center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
 				zoomValue.value = 8;
@@ -198,8 +212,8 @@ const currentLocationMarkerOptions = {
 		<Marker v-if="props.markCenter" :options="{ position: center }" />
 		<Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
 		<MarkerCluster>
-			<Marker @click="showDroneSpotInfo(droneSpot.name)" v-for=" droneSpot  in   droneSpots  " :key="droneSpot.id"
-				:options="droneSpotMarkerOptions(droneSpot)" />
+			<Marker @click="showDroneSpotInfo({ name: droneSpot.name })" v-for=" droneSpot  in   droneSpots  "
+				:key="droneSpot.id" :options="droneSpotMarkerOptions(droneSpot)" />
 		</MarkerCluster>
 		<CustomControl position="RIGHT_CENTER">
 			<DroneSpotInfo v-if="selectedDroneSpot" :droneSpot="selectedDroneSpot" @clear="selectedDroneSpot = null"
