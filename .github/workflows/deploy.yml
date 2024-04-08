@@ -1,4 +1,4 @@
-name: Deploy Vue App to GitHub Pages
+name: Deploy Vue App to AWS S3
 
 on:
   push:
@@ -7,15 +7,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-env:
-  BUILD_PATH: "."  
 
 jobs:
   build:
@@ -23,37 +14,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
         run: bun install
-        working-directory: ${{ env.BUILD_PATH }}
+        working-directory: ${{ github.workspace }}
 
       - name: Build Vue Project
         run: bun run build
-        working-directory: ${{ env.BUILD_PATH }}
+        working-directory: ${{ github.workspace }}
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload build to AWS S3
+        uses: jakejarvis/s3-sync-action@master
         with:
-          path: ${{ env.BUILD_PATH }}/dist 
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.pages.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "dist"
