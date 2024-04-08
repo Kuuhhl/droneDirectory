@@ -53,7 +53,7 @@ watchEffect(() => {
 const showDroneSpotInfo = (key) => {
 	let spot = null;
 	if (key.name) {
-		spot = droneSpots.value.find(droneSpot => droneSpot.name === name);
+		spot = droneSpots.value.find(droneSpot => droneSpot.name === key.name);
 	}
 	else if (key.id) {
 		spot = droneSpots.value.find(droneSpot => droneSpot.id === key.id);
