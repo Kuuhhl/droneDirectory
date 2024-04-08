@@ -3,7 +3,7 @@ import Map from './Map.vue'
 </script>
 
 <template>
-	<div class="pl-20 bg-zinc-100 max-md:pl-5">
+	<div class="py-10 pl-20 bg-zinc-100 max-md:pl-5">
 		<div class="flex gap-5 max-md:flex-col max-md:gap-0">
 			<div class="flex flex-col w-[41%] max-md:ml-0 max-md:w-full">
 				<div class="flex flex-col self-stretch my-auto max-md:mt-10 max-md:max-w-full">

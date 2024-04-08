@@ -95,6 +95,7 @@ onMounted(async () => {
 	}
 	if (props.id) {
 		selectedDroneSpot.value = droneSpots.value.find(droneSpot => droneSpot.id === props.id);
+		center.value = { lat: selectedDroneSpot.value.coordinates['lat'], lng: selectedDroneSpot.value.coordinates['lng'] };
 	}
 
 	const airportsData = await import('../data/uk_airports.json');
