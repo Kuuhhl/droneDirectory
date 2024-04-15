@@ -4,10 +4,24 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
 import { ref, onMounted } from 'vue'
 import seedrandom from 'seedrandom'
 import Hero from '../components/Hero.vue'
 import Display from '../components/Display.vue'
+
+useHead(
+  {
+    title: 'Home - Drone Directory'
+    ,
+    meta: [
+      {
+        name: 'description',
+        content: "Discover and share the best spots for drone photography in the British Isles."
+      }
+    ]
+  }
+)
 
 const droneShots = ref([]);
 

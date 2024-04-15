@@ -13,7 +13,7 @@
 
 		<div class="flex flex-col items-center justify-center">
 			<RouterLink to="/gallery" class="px-14 py-6 bg-black text-white rounded-md">
-				See More
+				Go to Gallery
 			</RouterLink>
 		</div>
 	</div>

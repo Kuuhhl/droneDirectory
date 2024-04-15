@@ -12,7 +12,11 @@ const router = createRouter({
     {
       path: '/map',
       name: 'map',
-      component: () => import('../views/MapView.vue')
+      component: () => import('../views/MapView.vue'),
+      meta: {
+        title: 'Map',
+        metaTags: [{ name: 'description', content: 'The map of the world' }]
+      }
     },
     {
       path: '/map/:id',
