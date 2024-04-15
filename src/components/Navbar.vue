@@ -1,5 +1,5 @@
 <template>
-	<nav class="border-4 border-black bg-zinc-200 w-full sticky top-0">
+	<nav class="border-4 border-black bg-zinc-200 w-full fixed top-0 z-10">
 		<div class="md:flex md:justify-between items-center p-3">
 			<!-- Logo and Menu Toggle Button -->
 			<div class="flex items-center justify-between w-full md:w-auto">
