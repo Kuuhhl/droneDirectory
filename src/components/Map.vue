@@ -21,7 +21,7 @@ const props = defineProps({
 	zoomValue: { type: Number, required: false, default: 5 },
 	markCenter: { type: Boolean, required: false, default: false }
 });
-const emit = defineEmits(['openWarning', 'mapReady']);
+const emit = defineEmits(['openWarning', 'mapReady', 'locationValid']);
 const handleOpenWarning = (coordinates) => { emit('openWarning', coordinates) }
 // Initialize a ref for airports data
 const airports = ref([]);
@@ -96,15 +96,36 @@ onMounted(async () => {
 	const droneSpotsData = await import('../data/drone_spots.json');
 	droneSpots.value = droneSpotsData.default;
 
+	const airportsData = await import('../data/uk_airports.json');
+	airports.value = airportsData.default;
+
+	if (props.markCenter) {
+		const centerLat = props.center.lat;
+		const centerLng = props.center.lng;
+		const R = 6371; // Earth's radius in kilometers
+
+		const isValid = !airports.value.some(airport => {
+			const dLat = (airport.coordinates[0] - centerLat) * (Math.PI / 180);
+			const dLng = (airport.coordinates[1] - centerLng) * (Math.PI / 180);
+			const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+				Math.cos(centerLat * (Math.PI / 180)) * Math.cos(airport.coordinates[0] * (Math.PI / 180)) *
+				Math.sin(dLng / 2) * Math.sin(dLng / 2);
+			const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+			const distance = R * c; // Distance in kilometers
+			return distance <= 5; // Check if distance is less than or equal to 5 km
+		});
+		emit('locationValid', isValid);
+		console.log("Location is valid: ", isValid);
+	}
+
 	if (props.demo) {
 		return
 	}
+
+
 	if (props.id) {
 		showDroneSpotInfo({ id: props.id });
 	}
-
-	const airportsData = await import('../data/uk_airports.json');
-	airports.value = airportsData.default;
 
 
 	if (navigator.geolocation) {
@@ -204,15 +225,13 @@ watch(() => googleMapRef.value?.ready, (ready) => {
 		:style="'width: 100%; height: ' + (props.demo ? '50vh' : '90vh')" :center="center" ref="googleMapRef"
 		:zoom="zoomValue" :streetViewControl="false" :restriction="restriction" :disableDefaultUi="props.demo"
 		:gestureHandling="props.demo ? 'none' : 'greedy'" :clickableIcons="!props.demo">
-		<template v-if="zoomValue >= 12">
-			<Marker v-for="        airport        in        visibleAirports        " :key="airport.id"
-				:options="airportMarkerOptions(airport)">
+		<template v-if="props.markCenter || zoomValue >= 12">
+			<Marker v-for="airport in visibleAirports" :key="airport.id" :options="airportMarkerOptions(airport)">
 				<InfoWindow :options="{ content: airport.name }" />
 			</Marker>
 		</template>
-		<template v-if="zoomValue >= 12">
-			<Circle v-for="        airport        in        visibleAirports        " :key="airport.id"
-				:options="circleOptions(airport)" />
+		<template v-if="markCenter || zoomValue >= 12">
+			<Circle v-for="airport in visibleAirports" :key="airport.id" :options="circleOptions(airport)" />
 		</template>
 		<Marker v-if="props.markCenter" :options="{ position: center }" />
 		<Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
