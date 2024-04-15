@@ -6,7 +6,7 @@
 				<RouterLink to="/" class="text-2xl font-bold uppercase" @click="isMenuOpen = false">
 					<img src="/logo.svg" class="h-10 w-10" alt="Logo" />
 				</RouterLink>
-				<button @click="isMenuOpen = !isMenuOpen" class="text-3xl md:hidden">
+				<button alt="Toggle Navbar" @click="isMenuOpen = !isMenuOpen" class="text-3xl md:hidden">
 					<font-awesome-icon v-if="!isMenuOpen" :icon="['fas', 'fa-bars']"></font-awesome-icon>
 					<font-awesome-icon v-if="isMenuOpen" :icon="['fas', 'fa-times']"></font-awesome-icon>
 				</button>
@@ -23,7 +23,7 @@
 				<div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-5 mt-3 md:mt-0">
 					<RouterLink v-for="link in linksRight" :key="link.text" :to="link.link" @click="isMenuOpen = false">{{
 					link.text }}</RouterLink>
-					<RouterLink :to="button.link" class="px-8 py-3 bg-black text-white rounded-md max-w-fit"
+					<RouterLink :to="button.link" class="px-8 py-3 bg-black text-white rounded-md max-w-fit hover:bg-gray-800"
 						@click="isMenuOpen = false">{{ button.text }}
 					</RouterLink>
 				</div>

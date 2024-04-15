@@ -17,14 +17,14 @@
 				<a href="tel:+441931319129" class="text-black">Phone: +44 1931-319129</a>
 			</div>
 			<!-- Social Media Links -->
-			<div class="flex gap-5 mt-5">
-				<a href="#" class="text-black text-lg">
+			<div class="flex gap-5 mt-5 text-black text-lg hover:text-gray-800">
+				<a href="#">
 					<FontAwesomeIcon :icon="faFacebook" />
 				</a>
-				<a href="#" class="text-black text-lg">
+				<a href="#">
 					<FontAwesomeIcon :icon="faInstagram" />
 				</a>
-				<a href="#" class="text-black text-lg">
+				<a href="#">
 					<FontAwesomeIcon :icon="faTwitter" />
 				</a>
 			</div>

@@ -10,7 +10,7 @@
 					</div>
 					<div class="flex justify-center items-center my-auto text-base">
 						<button @click="openWarning(props.droneSpot.coordinates)"
-							class="flex items-center px-4 py-3 rounded-md border">
+							class="flex items-center px-4 py-3 rounded-md border border-black border-solid hover:border-gray-400">
 							<font-awesome-icon :icon="['fas', 'route']" class="w-6" />
 							<span class="ml-2">Navigate there</span>
 						</button>
@@ -33,14 +33,16 @@
 					<routerLink to="/login" class="mt-4 text-xs underline">Add a Comment</routerLink>
 				</div>
 				<div class="flex flex-col md:flex-row justify-between px-4 mt-16 text-base gap-2.5">
-					<button class="px-4 py-3 bg-black rounded-md text-white flex items-center justify-center"
+					<button class="px-4 py-3 bg-black rounded-md text-white flex items-center justify-center hover:bg-gray-800"
 						@click="toggleWantToGo">
 						<font-awesome-icon v-if="!props.droneSpot.want_to_go" :icon="['fas', 'heart']" class="w-6" />
 						<font-awesome-icon v-if="props.droneSpot.want_to_go" :icon="['fas', 'heart-broken']" class="w-6" />
 						<span v-if="props.droneSpot.want_to_go" class="ml-2">Don't want to Go</span>
 						<span v-if="!props.droneSpot.want_to_go" class="ml-2">Want to Go</span>
 					</button>
-					<button class="px-4 py-3 rounded-md border flex items-center justify-center" @click="toggleVisited">
+					<button
+						class="px-4 py-3 rounded-md border border-black border-solid flex items-center justify-center hover:border-gray-400"
+						@click="toggleVisited">
 						<font-awesome-icon v-if="!props.droneSpot.visited" :icon="['fas', 'check']" class="w-6" />
 						<font-awesome-icon v-if="props.droneSpot.visited" :icon="['fas', 'xmark']" class="w-6" />
 						<span v-if="!props.droneSpot.visited" class="ml-2">Mark as Visited</span>

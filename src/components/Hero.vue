@@ -16,13 +16,13 @@ import Map from './Map.vue'
 					</div>
 					<div class="flex gap-5 mt-12 text-lg text-center max-md:flex-wrap max-md:mt-5">
 						<div class="flex flex-col justify-center text-white">
-							<RouterLink to="/map" class="justify-center px-14 py-6 bg-black rounded-md max-md:px-5">
+							<RouterLink to="/map" class="justify-center px-14 py-6 bg-black rounded-md max-md:px-5 hover:bg-gray-800">
 								Launch Map
 							</RouterLink>
 						</div>
 						<div class="flex flex-col justify-center text-black leading-[135%]">
 							<RouterLink to="/gallery"
-								class="justify-center px-12 py-6 rounded-md border border-black border-solid max-md:px-5">
+								class="justify-center px-12 py-6 rounded-md border border-black border-solid max-md:px-5 hover:border-gray-400">
 								View Gallery
 							</RouterLink>
 						</div>
