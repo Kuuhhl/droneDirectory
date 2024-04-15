@@ -11,8 +11,7 @@ import Map from './Map.vue'
 						Explore the British Isles
 					</div>
 					<div class="mt-12 text-xl leading-7 text-black max-md:mt-5 max-md:max-w-full">
-						Our Community finds the coolest places for your drone to grab
-						amazing shots while you're here!
+						Our community finds the coolest places for you to capture amazing shots with your drone while you're here!
 					</div>
 					<div class="flex gap-5 mt-12 text-lg text-center max-md:flex-wrap max-md:mt-5">
 						<div class="flex flex-col justify-center text-white">
