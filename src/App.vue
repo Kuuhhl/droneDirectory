@@ -31,7 +31,7 @@ const navbarProps = computed(() => {
 
 <template>
   <div class="flex flex-col gap-5">
-    <header class="h-16">
+    <header class="h-16 md:h-20">
       <Navbar :linksLeft="navbarProps.linksLeft" :linksRight="navbarProps.linksRight" :button="navbarProps.button" />
     </header>
     <main class="flex flex-col gap-5">

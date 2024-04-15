@@ -7,10 +7,11 @@
 					<label class="block text-gray-700 text-sm font-bold" for="location">
 						Location
 					</label>
-					<vue-google-autocomplete id="location" ref="location" types="point_of_interest"
-						class="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					<vue-google-autocomplete id="location" ref="location" types="point_of_interest" :country="['uk']"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						:class="{ 'border-red-500': inputLocationValid === false, 'border-green-500': inputLocationValid === true, 'border-black': inputLocationValid === null }"
-						placeholder="Start typing" @placechanged="getAddressData"></vue-google-autocomplete>
+						v-model="inputLocationString" :placeholder="placeholder"
+						@placechanged="getAddressData"></vue-google-autocomplete>
 					<button
 						class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 						:class="{ 'bg-gray-400 hover:bg-gray-400 cursor-not-allowed': !inputLocationValid }" type="submit"
@@ -24,8 +25,6 @@
 				<span v-if="inputLocationValid === true" class="text-green-500 text-sm">
 					Location found successfully.
 				</span>
-
-
 			</form>
 		</div>
 
@@ -47,18 +46,22 @@ export default {
 	data() {
 		return {
 			inputLocation: null,
-			inputLocationValid: null
+			inputLocationString: "",
+			inputLocationValid: null,
+			placeholder: "Start typing"
 		}
 	},
 	methods: {
 		submitLocation() {
-			alert('Location submitted.');
+			alert(`Location ${this.inputLocationString} submitted.`);
 		},
-		getAddressData(addressData) {
+		getAddressData(addressData, placeResultData) {
 			this.inputLocation = addressData;
+			this.inputLocationString = placeResultData.formatted_address;
+			this.placeholder = placeResultData.formatted_address;
+			document.getElementById('location').value = "";
 		},
 		setInputLocationValid(value) {
-			console.log('Location valid:', value);
 			this.inputLocationValid = value;
 		}
 	},
@@ -69,3 +72,4 @@ export default {
 	}
 }
 </script>
+
