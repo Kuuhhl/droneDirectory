@@ -1,31 +1,38 @@
 <script setup>
 import { RouterView, useRoute } from 'vue-router'
 import { computed } from 'vue'
+import { useIsLoggedInStore } from '@/stores/isLoggedIn';
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
+const store = useIsLoggedInStore();
+const route = useRoute();
+
 const defaultNavbarProps = {
-  linksLeft: [
-    { text: 'Gallery', link: '/gallery' }
-  ],
-  linksRight: [
-    { text: 'Add a location', link: '/contribute' },
-    { text: 'Login / Sign Up', link: '/login' }
-  ],
+  linksLeft: [{ text: 'Gallery', link: '/gallery' }],
+  linksRight: [{ text: 'Add a location', link: '/contribute' }],
   button: { text: 'Launch Map', link: '/map' },
 };
-const route = useRoute();
+
 const navbarProps = computed(() => {
-  if (route.path.startsWith('/map')) {
-    return {
-      ...defaultNavbarProps,
-      linksRight: [
-        { text: 'Login / Sign Up', link: '/login' }
-      ],
-      button: { text: 'Add a Location', link: '/contribute' },
-    };
+  let linksRight = [...defaultNavbarProps.linksRight];
+  let button = { ...defaultNavbarProps.button };
+
+  if (store.isLoggedIn) {
+    linksRight.push({ text: 'Logout', function: store.logOut });
+  } else {
+    linksRight = [{ text: 'Login / Sign Up', link: '/login' }];
   }
-  return defaultNavbarProps;
+
+  if (route.path.startsWith('/map')) {
+    button = { text: 'Add a Location', link: '/contribute' };
+  }
+
+  return {
+    ...defaultNavbarProps,
+    linksRight,
+    button
+  };
 });
 </script>
 
@@ -40,3 +47,4 @@ const navbarProps = computed(() => {
     <Footer />
   </div>
 </template>
+
