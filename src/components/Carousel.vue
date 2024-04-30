@@ -1,6 +1,6 @@
 <template>
 	<div class="relative group" v-touch:swipe.left="nextImage" v-touch:swipe.right="prevImage">
-		<button @click="emit('clear')"
+		<button v-if="!props.hideCloseButton" @click="emit('clear')"
 			class="absolute right-0 top-0 z-20 flex justify-center items-center w-12 h-12 text-xl p-2">
 			<font-awesome-icon :icon="['fas', 'times']" class="w-4 text-white" />
 		</button>
@@ -32,7 +32,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faChevronLeft, faChevronRight, faTimes)
 
-const props = defineProps(['imageSources'])
+const props = defineProps({
+	imageSources: {
+		type: Array,
+		default: () => []
+	},
+	hideCloseButton: {
+		type: Boolean,
+		default: false
+	}
+})
 const emit = defineEmits(['clear'])
 const currentIndex = ref(0)
 

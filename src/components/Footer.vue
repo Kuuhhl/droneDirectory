@@ -5,7 +5,7 @@
 			<div class="text-center">
 				<div class="text-2xl text-black mb-2">About Us</div>
 				<p class="text-black text-lg">
-					Capturing the world from above. Dedicated to providing stunning drone imagery.
+					Capturing the world from above. Join us now!
 				</p>
 			</div>
 			<!-- Contact Info -->

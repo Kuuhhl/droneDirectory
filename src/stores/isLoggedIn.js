@@ -7,12 +7,12 @@ export const useIsLoggedInStore = defineStore('isLoggedIn', () => {
 
   function logIn() {
     isLoggedIn.value = true
-    Cookies.set('isLoggedIn', 'true')
+    Cookies.set('isLoggedIn', 'true', {sameSite: 'strict'})
   }
 
   function logOut() {
     isLoggedIn.value = false
-    Cookies.set('isLoggedIn', 'false')
+    Cookies.set('isLoggedIn', 'false', {sameSite: 'strict'})
   }
 
   return { isLoggedIn, logIn, logOut }

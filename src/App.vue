@@ -19,13 +19,14 @@ const navbarProps = computed(() => {
   let button = { ...defaultNavbarProps.button };
 
   if (store.isLoggedIn) {
-    linksRight.push({ text: 'Logout', function: store.logOut });
+     linksRight.push({ text: 'Log out', function: store.logOut })
   } else {
-    linksRight = [{ text: 'Login / Sign Up', link: '/login' }];
+    linksRight.push({ text: 'Login / Sign Up', link: '/login' })
   }
 
   if (route.path.startsWith('/map')) {
     button = { text: 'Add a Location', link: '/contribute' };
+    linksRight = linksRight.filter(link => link.text !== 'Add a location');
   }
 
   return {
@@ -47,4 +48,3 @@ const navbarProps = computed(() => {
     <Footer />
   </div>
 </template>
-

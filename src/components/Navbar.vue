@@ -20,24 +20,30 @@
 					</RouterLink>
 				</div>
 				<div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-5 mt-3 md:mt-0">
-					<RouterLink v-for="link in linksRight" :key="link.text" :to="link.link" @click="isMenuOpen = false">
-						{{ link.text }}
-					</RouterLink>
-					<component :is="button.link ? 'RouterLink' : 'button'" :to="button.link || null"
-						class="px-8 py-3 bg-black text-white rounded-md max-w-fit hover:bg-gray-800" @click="executeButtonAction">{{
-					button.text }}
+					<component v-for="item in props.linksRight" :key="item.text"
+						:is="item.link ? 'RouterLink' : 'button'" :to="item.link || null"
+						@click="item.link ? executeAction(item) : executeAction(item)"
+						class="cursor-pointer text-start">
+						{{ item.text }}
+					</component>
+					<component :is="props.button.link ? 'RouterLink' : 'button'" :to="props.button.link || null"
+						@click="props.button.link ? executeAction(props.button) : executeAction(props.button)"
+						class="px-8 py-3 bg-black text-white rounded-md max-w-fit hover:bg-gray-800 cursor-pointer">
+						{{ button.text }}
 					</component>
 				</div>
 			</div>
 		</div>
 	</nav>
 </template>
+
 <script setup>
 import { ref } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { RouterLink } from 'vue-router'
+
 
 library.add(faBars, faTimes)
 
@@ -61,11 +67,13 @@ const isMenuOpen = ref(false)
 function toggleMenu() {
 	isMenuOpen.value = !isMenuOpen.value
 }
-
-function executeButtonAction() {
-	if (!props.button.link && props.button.function) {
-		props.button.function()
+const executeAction = (item) => {
+	isMenuOpen.value = false;
+	if (item.function) {
+		item.function();
 	}
-	isMenuOpen.value = false
-}
+};
+
+
+
 </script>

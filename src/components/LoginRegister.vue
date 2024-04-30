@@ -79,22 +79,22 @@ import { faGoogle, faApple, faFacebook } from '@fortawesome/free-brands-svg-icon
 library.add(faGoogle, faApple, faFacebook);
 
 const router = useRouter();
-const route = useRoute();
-const { isLoggedIn, logIn } = useIsLoggedInStore();
+const { logIn } = useIsLoggedInStore();
 
 const isRegistering = ref(false);
 const firstName = ref('');
 const email = ref('');
 const password = ref('');
 
-const forwardUrl = computed(() => route.query.forward || '/');
 
 function submitForm() {
-	logIn();
-	router.push(forwardUrl.value);
+  logIn();
+
+  const redirectPath = sessionStorage.getItem('redirectPath') || '/';
+  
+  sessionStorage.removeItem('redirectPath');
+
+  router.push(redirectPath);
 }
 
-function handleGoogleButtonClick() {
-	alert('Google button clicked');
-}
 </script>

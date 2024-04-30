@@ -115,7 +115,6 @@ onMounted(async () => {
 			return distance <= 5; // Check if distance is less than or equal to 5 km
 		});
 		emit('locationValid', isValid);
-		console.log("Location is valid: ", isValid);
 	}
 
 	if (props.demo) {
@@ -236,7 +235,7 @@ watch(() => googleMapRef.value?.ready, (ready) => {
 		<Marker v-if="props.markCenter" :options="{ position: center }" />
 		<Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
 		<MarkerCluster>
-			<Marker @click="showDroneSpotInfo({ name: droneSpot.name })" v-for=" droneSpot  in   droneSpots  "
+			<Marker @click="showDroneSpotInfo({ name: droneSpot.name })" v-for=" droneSpot in droneSpots  "
 				:key="droneSpot.id" :options="droneSpotMarkerOptions(droneSpot)" />
 		</MarkerCluster>
 		<CustomControl position="RIGHT_CENTER">

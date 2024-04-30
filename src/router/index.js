@@ -29,6 +29,7 @@ const router = createRouter({
       path: '/contribute',
       name: 'contribute',
       component: () => import('../views/ContributeView.vue'),
+      props: (route) => ({ query: route.query.data }),
       meta: { requiresAuth: true }
     },
     {
@@ -48,14 +49,15 @@ router.beforeEach((to, from, next) => {
   const { isLoggedIn } = useIsLoggedInStore()
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
 
-  console.log('isLoggedIn', isLoggedIn)
-  console.log(to)
-  console.log(to.path)
-  console.log(to.fullPath)
+  if (to.path !== '/login')
+  {
+  sessionStorage.setItem('redirectPath', to.fullPath);
+  }
   if (requiresAuth && !isLoggedIn && to.path !== '/login') {
-    next({ path: '/login', query: { forward: to.fullPath } })
+    next({ path: '/login'})
   } else {
     next()
   }
 })
+
 export default router
