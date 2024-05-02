@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-col justify-center items-center px-5 gap-10 py-10 bg-zinc-100">
-        <div class="bg-white shadow-md rounded p-5 max-w-xs sm:max-w-sm md:max-w-xl xl:max-w-2xl">
+        <div class="bg-white shadow-md rounded p-10 max-w-xs sm:max-w-sm md:max-w-xl xl:max-w-2xl">
             <!-- Location Form -->
             <form @submit.prevent="submitLocation" class="flex flex-col gap-5 justify-center items-center">
                 <!-- step 1 -->
-                <div v-if="step === 1" class="flex flex-col gap-2 justify-center items-center w-full">
+                <div v-if="step === 1" class="flex flex-col gap-5 justify-center items-center w-full">
                     <div class="flex flex-col w-full">
                         <h1 class="text-center text-3xl font-bold mb-4">Contribute a location</h1>
                         <p class="text-center text-lg text-gray-700">Share your favourite spot!
@@ -47,17 +47,21 @@
                 </div>
                 <!-- step 2 -->
                 <div v-if="step === 2" class="flex flex-col gap-5 justify-center items-center w-full">
-                    <div class="flex flex-col w-full">
-                        <h1 class="text-center text-3xl font-bold mb-4">Time for some details</h1>
-                        <p class="text-center text-lg text-gray-700">High-quality photos can attract more drone
-                            enthusiasts to your amazing location. Make it shine!</p>
+                    <div class="flex flex-col w-full gap-5">
+                        <div>
+                            <h1 class="text-center text-3xl font-bold mb-4">Time for some details</h1>
+                            <p class="text-center text-lg text-gray-700">High-quality photos can attract more drone
+                                enthusiasts to your amazing location. Make it shine!</p>
+                        </div>
 
-                        <label for="locationName" class="block text-gray-700 text-sm font-bold">
-                            Location Name*
-                        </label>
-                        <input id="locationName" v-model="locationName" type="text"
-                            :placeholder="inputLocationString.split(',')[0]" required
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                        <div>
+                            <label for="locationName" class="block text-gray-700 text-sm font-bold">
+                                Location Name*
+                            </label>
+                            <input id="locationName" v-model="locationName" type="text"
+                                :placeholder="inputLocationString.split(',')[0]" required
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                        </div>
                     </div>
 
                     <div class="flex flex-col w-full">
@@ -76,7 +80,7 @@
                             class="flex flex-col justify-between items-center text-gray-500 hover:text-gray-600 transition duration-100 ease-in-out text-center">
                             <div id="fileUpload" @click="openFileDialog" @dragover.prevent="dragover"
                                 @dragleave="dragleave" @drop.prevent="drop"
-                                class="file-upload w-full text-sm border rounded leading-tight focus:outline-none focus:shadow-outline flex items-center justify-center cursor-pointer"
+                                class="file-upload w-full text-sm border rounded leading-tight focus:outline-none focus:shadow-outline flex items-center justify-center cursor-pointer p-5"
                                 :class="{ 'border-red-500': submitted && photos.length === 0 }">
                                 <input ref="fileInput" type="file" @change="handleFileUpload" multiple hidden />
                                 <div class="py-2 flex flex-col items-center justify-center gap-4">
