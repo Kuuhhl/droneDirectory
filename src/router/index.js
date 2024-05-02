@@ -35,7 +35,8 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginRegisterView.vue')
+      component: () => import('../views/LoginRegisterView.vue'),
+      props: (route) => ({ message: route.query.message })
     },
     {
       path: '/gallery',
@@ -49,12 +50,14 @@ router.beforeEach((to, from, next) => {
   const { isLoggedIn } = useIsLoggedInStore()
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
 
-  if (to.path !== '/login')
-  {
-  sessionStorage.setItem('redirectPath', to.fullPath);
+  if (to.path !== '/login') {
+    sessionStorage.setItem('redirectPath', to.fullPath)
   }
   if (requiresAuth && !isLoggedIn && to.path !== '/login') {
-    next({ path: '/login'})
+    if (to.path === '/contribute') {
+      next({ path: '/login', query: { message: 'Log in to contribute' } })
+    }
+    next({ path: '/login', query: { message: 'Log in to access this page' } })
   } else {
     next()
   }
