@@ -55,9 +55,9 @@ router.beforeEach((to, from, next) => {
   }
   if (requiresAuth && !isLoggedIn && to.path !== '/login') {
     if (to.path === '/contribute') {
-      next({ path: '/login', query: { message: 'Log in to contribute' } })
+      next({ path: '/login', query: { message: 'Log In to contribute' } })
     }
-    next({ path: '/login', query: { message: 'Log in to access this page' } })
+    next({ path: '/login', query: { message: 'Log In to access this page' } })
   } else {
     next()
   }
