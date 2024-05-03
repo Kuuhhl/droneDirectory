@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView, useRoute } from 'vue-router'
+import { RouterView, useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
 import { useIsLoggedInStore } from '@/stores/isLoggedIn';
 import Navbar from './components/Navbar.vue'
@@ -7,6 +7,7 @@ import Footer from './components/Footer.vue'
 
 const store = useIsLoggedInStore();
 const route = useRoute();
+const router = useRouter()
 
 const defaultNavbarProps = {
   linksLeft: [{ text: 'Gallery', link: '/gallery' }],
@@ -19,7 +20,9 @@ const navbarProps = computed(() => {
   let button = { ...defaultNavbarProps.button };
 
   if (store.isLoggedIn) {
-     linksRight.push({ text: 'Log out', function: store.logOut })
+    linksRight.push({
+      text: 'Log out', function: () => { store.logOut(); router.push('/') }
+    })
   } else {
     linksRight.push({ text: 'Login / Sign Up', link: '/login' })
   }

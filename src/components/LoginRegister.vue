@@ -59,6 +59,11 @@
                             <span v-if="showPassword" class="hidden">Hide Password</span>
                             <span v-else class="hidden">Show Password</span>
                         </button>
+                        <!-- Forgot Password Button -->
+                        <RouterLink v-if="password.length < 1 && !isRegistering" to="#"
+                            class="text-sm text-black hover:text-gray-700">
+                            Forgot Password?
+                        </RouterLink>
                     </div>
 
                     <input v-model="password" :type="showPassword ? 'text' : 'password'" required minlength="6"
@@ -81,6 +86,7 @@
                     {{ isRegistering ? 'Already have an account?' : 'No account yet?' }}
                 </button>
             </div>
+
         </div>
 
     </div>
