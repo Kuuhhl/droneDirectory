@@ -35,6 +35,7 @@ const locationFound = ref(false);
 const zoomValue = ref(props.zoomValue);
 const mapBounds = ref(null)
 const selectedDroneSpot = ref(null);
+const userLocation = ref({})
 
 
 if (!props.demo) {
@@ -54,9 +55,9 @@ watchEffect(() => {
 
 watch(selectedDroneSpot, (newValue) => {
 	if (newValue) {
-	router.push({ name: 'map', params: { id: newValue.id } });
+		router.push({ name: 'map', params: { id: newValue.id } });
 	} else {
-	router.push({ name: 'map' });
+		router.push({ name: 'map' });
 	}
 });
 
@@ -150,6 +151,7 @@ onMounted(async () => {
 				if (!selectedDroneSpot.value) {
 					locationFound.value = true;
 					center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
+					userLocation.value = { lat: position.coords.latitude, lng: position.coords.longitude };
 					zoomValue.value = 8;
 				}
 			},
@@ -243,7 +245,7 @@ watch(() => googleMapRef.value?.ready, (ready) => {
 			<Circle v-for="airport in visibleAirports" :key="airport.id" :options="circleOptions(airport)" />
 		</template>
 		<Marker v-if="props.markCenter" :options="{ position: center }" />
-		<Marker v-if="locationFound" :options="{ position: center, ...currentLocationMarkerOptions }" />
+		<Marker v-if="locationFound" :options="{ position: userLocation, ...currentLocationMarkerOptions }" />
 		<MarkerCluster>
 			<Marker @click="showDroneSpotInfo({ name: droneSpot.name })" v-for=" droneSpot in droneSpots  "
 				:key="droneSpot.id" :options="droneSpotMarkerOptions(droneSpot)" />
