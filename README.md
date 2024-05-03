@@ -12,7 +12,7 @@
 </p>
 
 <div align="center" style="display: flex; flex-direction: column;">
-  <a href="https://whiteboard.landmann.ph/">
+  <a href="https://dronedirectory.landmann.ph/">
     <img src="https://img.shields.io/badge/Launch-00358a?style=for-the-badge&logo=google-chrome&logoColor=white">
   </a>
 </div>
