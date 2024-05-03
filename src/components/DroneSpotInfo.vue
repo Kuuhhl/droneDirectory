@@ -34,7 +34,8 @@
                         less</button>
                     <div v-if="!store.isLoggedIn">
                         <span>You've been here? </span>
-                        <RouterLink to="/login" class="mt-4 text-xs underline">Log In</RouterLink>
+                        <RouterLink to="/login?message=Log+in+to+comment" class="mt-4 text-xs underline">Log In
+                        </RouterLink>
                         <span> to add a comment!</span>
                     </div>
                     <div v-if="store.isLoggedIn">
