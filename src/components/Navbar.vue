@@ -3,10 +3,14 @@
 		<div class="md:flex md:justify-between items-center p-3">
 			<!-- Logo and Menu Toggle Button -->
 			<div class="flex items-center justify-between w-full md:w-auto">
-				<RouterLink to="/" class="text-2xl font-bold uppercase" @click="isMenuOpen = false">
+				<RouterLink to="/" class="text-xl font-semibold flex gap-2 items-center justify-center group"
+					@click="isMenuOpen = false">
 					<img src="/logo.svg"
-						class="h-10 w-10 transition duration-100 transform hover:-translate-y-0.5 hover:scale-105" alt="Logo" />
+						class="h-10 w-10 transition duration-100 transform group-hover:-translate-y-0.5 group-hover:scale-105"
+						alt="Logo" />
+					<span class="hidden md:inline">Drone Directory</span>
 				</RouterLink>
+
 				<button alt="Toggle Navbar" @click="toggleMenu" class="text-3xl md:hidden">
 					<FontAwesomeIcon :icon="['fas', isMenuOpen ? 'fa-times' : 'fa-bars']" />
 				</button>
