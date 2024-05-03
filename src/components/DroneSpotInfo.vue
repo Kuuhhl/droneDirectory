@@ -7,11 +7,11 @@
                     <div>
                         <div class="text-xl">{{ props.droneSpot.visitors }} Visits</div>
                         <div :class="{ 'mt-2 text-2xl font-medium': true, 'max-w-48': store.isLoggedIn }">{{
-                            props.droneSpot.name }}</div>
+                props.droneSpot.name }}</div>
                     </div>
                     <div v-if="store.isLoggedIn" class="flex justify-center items-center my-auto text-base">
                         <button @click="openWarning(props.droneSpot.coordinates)"
-                            class="flex items-center px-4 py-3 rounded-md border border-black border-solid hover:border-gray-400">
+                            class="flex items-center justify-center px-4 py-3 rounded-md border border-black border-solid hover:border-gray-400">
                             <font-awesome-icon :icon="['fas', 'route']" class="w-6" />
                             <span class="ml-2">Navigate there</span>
                         </button>
@@ -61,7 +61,7 @@
                         <span v-if="props.droneSpot.visited" class="ml-2">Unmark as Visited</span>
                     </button>
                     <button @click="openWarning(props.droneSpot.coordinates)" v-if="!store.isLoggedIn"
-                        class="flex items-center px-4 py-3 rounded-md border border-black border-solid hover:border-gray-400">
+                        class="flex items-center justify-center px-4 py-3 rounded-md border border-black border-solid hover:border-gray-400">
                         <font-awesome-icon :icon="['fas', 'route']" class="w-6" />
                         <span class="ml-2">Navigate me there</span>
                     </button>

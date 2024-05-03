@@ -11,19 +11,14 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/map',
+      path: '/map/:id?',
       name: 'map',
       component: () => import('../views/MapView.vue'),
+      props: true,
       meta: {
         title: 'Map',
-        metaTags: [{ name: 'description', content: 'The map of the world' }]
+        metaTags: [{ name: 'description', content: 'Map of the drone spots' }]
       }
-    },
-    {
-      path: '/map/:id',
-      name: 'location',
-      component: () => import('../views/MapView.vue'),
-      props: true
     },
     {
       path: '/contribute',

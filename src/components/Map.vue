@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
+import { useRouter } from 'vue-router';
 import { ref, nextTick, onMounted, computed, watch, watchEffect } from 'vue';
 import { CustomControl, GoogleMap, InfoWindow, Marker, MarkerCluster, Circle } from 'vue3-google-map';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -21,6 +22,7 @@ const props = defineProps({
 	zoomValue: { type: Number, required: false, default: 5 },
 	markCenter: { type: Boolean, required: false, default: false }
 });
+const router = useRouter();
 const emit = defineEmits(['openWarning', 'mapReady', 'locationValid']);
 const handleOpenWarning = (coordinates) => { emit('openWarning', coordinates) }
 // Initialize a ref for airports data
@@ -47,6 +49,14 @@ watchEffect(() => {
 		nextTick(() => {
 			googleMapRef.value.map.setCenter(googleMapRef.value.map.getCenter());
 		});
+	}
+});
+
+watch(selectedDroneSpot, (newValue) => {
+	if (newValue) {
+	router.push({ name: 'map', params: { id: newValue.id } });
+	} else {
+	router.push({ name: 'map' });
 	}
 });
 
@@ -99,6 +109,10 @@ onMounted(async () => {
 	const airportsData = await import('../data/uk_airports.json');
 	airports.value = airportsData.default;
 
+	if (props.id) {
+		showDroneSpotInfo({ id: props.id });
+	}
+
 	if (props.markCenter) {
 		const centerLat = props.center.lat;
 		const centerLng = props.center.lng;
@@ -121,12 +135,6 @@ onMounted(async () => {
 		return
 	}
 
-
-	if (props.id) {
-		showDroneSpotInfo({ id: props.id });
-	}
-
-
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(
 			position => {
@@ -139,9 +147,11 @@ onMounted(async () => {
 					return;
 				}
 
-				locationFound.value = true;
-				center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
-				zoomValue.value = 8;
+				if (!selectedDroneSpot.value) {
+					locationFound.value = true;
+					center.value = { lat: position.coords.latitude, lng: position.coords.longitude };
+					zoomValue.value = 8;
+				}
 			},
 			() => console.error("Geolocation access was denied or not available.")
 		);
