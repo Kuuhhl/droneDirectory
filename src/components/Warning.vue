@@ -9,8 +9,8 @@
 				</div>
 			</template>
 			<template v-slot:content>
-				<div class="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
-					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+				<div class="flex flex-col lg:flex-row justify-between gap-8 md:gap-16 overflow-x-scroll">
+					<div class="guideline flex flex-col items-center text-center lg:items-start lg:text-left">
 						<img src="/images/warnings/privacy.png" alt="Image of a drone invading a person's privacy"
 							class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
 						<div class="w-64">
@@ -22,7 +22,7 @@
 						</div>
 					</div>
 
-					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+					<div class="guideline flex flex-col items-center text-center lg:items-start lg:text-left">
 						<img src="/images/warnings/airports.png" alt="Image of a drone flying over an airport."
 							class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
 						<div class="w-64">
@@ -33,7 +33,7 @@
 						</div>
 					</div>
 
-					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+					<div class="guideline flex flex-col items-center text-center lg:items-start lg:text-left">
 						<img src="/images/warnings/caa.png" alt="Civial Aviation Authority's Logo"
 							class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
 						<div class="w-64">

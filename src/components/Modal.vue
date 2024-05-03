@@ -43,6 +43,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { onMounted, onUnmounted } from 'vue'
 
 library.add(faTimes)
 
@@ -51,4 +52,12 @@ const emit = defineEmits(['closeWarning'])
 const closeWarning = () => {
 	emit('closeWarning')
 }
+
+onMounted(() => {
+	document.body.style.overflow = 'hidden'
+})
+onUnmounted(() => {
+	document.body.style.overflow = 'auto'
+}
+)
 </script>
