@@ -108,7 +108,9 @@
 			<template v-slot:header>
 				<div class="flex flex-col w-full">
 					<h1 class="text-center text-3xl font-bold mb-4">Great views await you!</h1>
-					<p class="text-center text-lg text-gray-700">We have sent the route to your phone. Please check your messages.
+					<p class="text-center text-lg text-gray-700">We have sent the route to your phone.
+						<br />
+						Please check your messages.
 					</p>
 				</div>
 			</template>
@@ -122,8 +124,8 @@
 				<div class="flex gap-2.5 justify-between px-8">
 					<button @click="closeWarning"
 						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md">
-						<font-awesome-icon :icon="['fas', 'check']" class="mr-2"></font-awesome-icon>
-						Back to Map
+						<FontAwesomeIcon :icon="['fas', 'check']" class="mr-2" />
+						Got it!
 					</button>
 				</div>
 			</template>
