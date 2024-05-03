@@ -11,10 +11,10 @@
 			<!-- Contact Info -->
 			<div class="mt-10 text-center">
 				<div class="text-xl text-black mb-1">Contact Us</div>
-				<span>Email: <a href="mailto:contact@dronedirectory.com" target="_blank"
-						class="text-black hover:underline">contact@dronedirectory.com</a></span>
+				<span>Email: <a href="mailto:dronedirectory@landmann.ph" target="_blank"
+						class="text-black hover:underline">dronedirectory@landmann.ph</a></span>
 				<br />
-				<span>Phone: <a href="tel:+441931319129" class="text-black hover:underline">+44 1931-319129</a></span>
+				<span>Phone: <a href="tel:+4411111111111" class="text-black hover:underline">+44 111-1111111</a></span>
 			</div>
 			<!-- Social Media Links -->
 			<div class="flex gap-5 mt-5 text-black text-lg hover:text-gray-800">
