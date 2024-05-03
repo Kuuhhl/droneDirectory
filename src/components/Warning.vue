@@ -2,49 +2,58 @@
 	<template v-if="step === 1">
 		<Modal @closeWarning="closeWarning">
 			<template v-slot:header>
-				<h2 class="mt-1.5 text-4xl font-medium text-center">Before you depart</h2>
-				<p class="mt-9 text-lg leading-7 text-center">
-					Before we proceed to navigation, please accept the following guidelines:
-				</p>
+				<div class="flex flex-col w-full">
+					<h1 class="text-center text-3xl font-bold mb-4">Before you depart</h1>
+					<p class="text-center text-lg text-gray-700">Before we proceed to navigation, please accept the following
+						guidelines: </p>
+				</div>
 			</template>
-
 			<template v-slot:content>
-				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center justify-items-center">
-					<div class="guideline">
-						<div class="bg-black aspect-square h-80"></div>
-						<h3 class="mt-10 text-2xl leading-8">Respect other’s privacy</h3>
-						<p class="mt-9 text-sm leading-5">
-							We’re sure you wouldn’t like a drone buzzing outside your apartment window - keep it that way for others
-							as well.
-						</p>
+				<div class="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
+					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+						<img src="/images/warnings/privacy.webp" class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
+						<div class="w-64">
+							<h3 class="text-2xl font-semibold mb-2">Respect other's privacy</h3>
+							<p class="text-sm text-gray-600 leading-6">
+								We're sure you wouldn't like a drone buzzing outside your apartment window - keep it that way for others
+								as well.
+							</p>
+						</div>
 					</div>
-					<div class="guideline">
-						<div class="bg-black aspect-square h-80"></div>
-						<h3 class="mt-10 text-2xl leading-8">Do not fly over restricted areas</h3>
-						<p class="mt-8 text-sm leading-5">
-							This especially includes airports, airfields, military bases, and other restricted areas.
-						</p>
+
+					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+						<img src="/images/warnings/airports.webp" class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
+						<div class="w-64">
+							<h3 class="text-2xl font-semibold mb-2">Do not fly over restricted areas</h3>
+							<p class="text-sm text-gray-600 leading-6">
+								This especially includes airports, airfields, military bases, and other restricted areas.
+							</p>
+						</div>
 					</div>
-					<div class="guideline">
-						<div class="bg-black aspect-square h-80"></div>
-						<h3 class="mt-10 text-2xl leading-8">Follow the CAA Regulations</h3>
-						<p class="mt-8 text-sm leading-5">
-							In order to legally fly drones in the UK, you have to follow the CAA’s regulations. This can include
-							applying for insurance and / or license before flying.
-							<a href="https://www.caa.co.uk/uk-regulations/" class="underline">View Regulations</a>
-						</p>
+
+					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
+						<img src="/images/warnings/caa.png" class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
+						<div class="w-64">
+							<h3 class="text-2xl font-semibold mb-2">Follow the CAA Regulations</h3>
+							<p class="text-sm text-gray-600 leading-6">
+								In order to legally fly drones in the UK, you have to follow the CAA's regulations. This can include
+								applying for insurance and / or license before flying.
+								<br />
+								<a href="https://www.caa.co.uk/uk-regulations/" class="text-black underline">View
+									Regulations</a>
+							</p>
+						</div>
 					</div>
 				</div>
 			</template>
-
 			<template v-slot:footer>
 				<div class="flex flex-col md:flex-row gap-2.5 justify-between px-8">
 					<button @click="acceptWarning"
-						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md">
+						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md hover:bg-gray-800">
 						Accept & Send Route to Phone
 					</button>
 					<a :href="`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(props.coordinates['lat'] + ',' + props.coordinates['lng'])}&travelmode=driving`"
-						class="flex justify-center items-center px-16 py-5 w-full text-black rounded-md border border-black">
+						class="flex justify-center items-center px-16 py-5 w-full text-black rounded-md border border-black hover:border-gray-400">
 						Accept & View Route
 					</a>
 				</div>
@@ -54,33 +63,37 @@
 	<template v-if="step === 2">
 		<Modal @closeWarning="closeWarning">
 			<template v-slot:header>
-				<h2 class="mt-1.5 text-4xl font-medium text-center">Ready to get started?</h2>
-				<p class="mt-9 text-lg leading-7 text-center">
-					We will send the route to your phone via SMS. Please make sure you have your phone with you.
-				</p>
-			</template>
-			<template v-slot:content>
-				<div
-					class="flex gap-2.5 justify-center mt-12 whitespace-nowrap text-black text-opacity-50 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-					<div class="flex flex-col justify-center">
-						<div
-							class="justify-center items-start px-2.5 py-6 bg-white rounded-md border border-black border-solid max-md:pr-5">
-							+44
-						</div>
-					</div>
-					<div class="flex flex-col justify-center">
-						<div
-							class="justify-center items-start p-6 bg-white rounded-md border border-black border-solid max-md:px-5">
-							1830181193
-						</div>
-					</div>
+				<div class="flex flex-col w-full">
+					<h1 class="text-center text-3xl font-bold mb-4">Ready to fly?</h1>
+					<p class="text-center text-lg text-gray-700">We will send the route to your phone via SMS.
+						<br />
+						Please make sure
+						you have your phone with you.
+					</p>
 				</div>
 			</template>
+
+			<template v-slot:content>
+				<div class="flex justify-center gap-1">
+					<input type="text" v-model="countryCode" placeholder="+44" maxlength="4" required
+						class="px-4 py-3 bg-white rounded-md border border-black border-solid focus:outline-none max-md:px-5 w-20">
+					<input type="tel" v-model="phoneNumber" placeholder="Enter your phone number" pattern="\[0-9\]+" required
+						class="px-4 py-3 bg-white rounded-md border border-black border-solid focus:outline-none max-md:px-5" />
+
+				</div>
+				<p v-if="phoneNumberError" class="text-red-500 mt-2 text-center">
+					Please enter a valid phone number.
+				</p>
+
+
+			</template>
+
+
 			<template v-slot:footer>
 				<div class="flex gap-2.5 justify-between px-8">
 					<button @click="submitPhoneNumber"
-						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md">
-						<font-awesome-icon :icon="['fas', 'paper-plane']" class="mr-2"></font-awesome-icon>
+						class="flex justify-center items-center px-6 py-5 w-full bg-black text-white rounded-md hover:bg-gray-800">
+						<FontAwesomeIcon :icon="['fas', 'paper-plane']" class="mr-2" />
 						Send Route to Phone
 					</button>
 				</div>
@@ -90,28 +103,18 @@
 	<template v-if="step === 3">
 		<Modal @closeWarning="closeWarning">
 			<template v-slot:header>
-				<h2 class="mt-1.5 text-4xl font-medium text-center">Route Sent!</h2>
-				<p class="mt-9 text-lg leading-7 text-center">
-					We have sent the route to your phone. Please check your messages.
-				</p>
-			</template>
-			<template v-slot:content>
-				<div
-					class="flex gap-2.5 justify-center mt-12 whitespace-nowrap text-black text-opacity-50 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-					<div class="flex flex-col justify-center">
-						<div
-							class="justify-center items-start px-2.5 py-6 bg-white rounded-md border border-black border-solid max-md:pr-5">
-							+44
-						</div>
-					</div>
-					<div class="flex flex-col justify-center">
-						<div
-							class="justify-center items-start p-6 bg-white rounded-md border border-black border-solid max-md:px-5">
-							1830181193
-						</div>
-					</div>
+				<div class="flex flex-col w-full">
+					<h1 class="text-center text-3xl font-bold mb-4">Great views await you!</h1>
+					<p class="text-center text-lg text-gray-700">We have sent the route to your phone. Please check your messages.
+					</p>
 				</div>
 			</template>
+
+			<template v-slot:content>
+				<template>
+				</template>
+			</template>
+
 			<template v-slot:footer>
 				<div class="flex gap-2.5 justify-between px-8">
 					<button @click="closeWarning"
@@ -136,7 +139,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPaperPlane, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import Modal from './Modal.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 library.add(faPaperPlane, faCheck)
 const emit = defineEmits(['closeWarning'])
 const props = defineProps({
@@ -155,6 +158,21 @@ const acceptWarning = () => {
 	step.value = 2
 }
 const submitPhoneNumber = () => {
-	step.value = 3
+	if (isPhoneNumberValid.value) {
+		phoneNumberError.value = false
+		step.value = 3
+	} else {
+		phoneNumberError.value = true
+	}
 }
+
+const phoneNumber = ref('')
+const countryCode = ref('+44')
+const phoneNumberError = ref(false)
+const isPhoneNumberValid = computed(() => {
+	const prefixRegex = /^\+\d+$/
+	const phoneNumberRegex = /^\d+$/
+	return phoneNumberRegex.test(phoneNumber.value) && prefixRegex.test(countryCode.value)
+})
+
 </script>

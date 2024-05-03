@@ -4,26 +4,26 @@
 			<!-- Logo and Menu Toggle Button -->
 			<div class="flex items-center justify-between w-full md:w-auto">
 				<RouterLink to="/" class="text-2xl font-bold uppercase" @click="isMenuOpen = false">
-					<img src="/logo.svg" class="h-10 w-10" alt="Logo" />
+					<img src="/logo.svg"
+						class="h-10 w-10 transition duration-100 transform hover:-translate-y-0.5 hover:scale-105" alt="Logo" />
 				</RouterLink>
 				<button alt="Toggle Navbar" @click="toggleMenu" class="text-3xl md:hidden">
-					<font-awesome-icon :icon="['fas', isMenuOpen ? 'fa-times' : 'fa-bars']" />
+					<FontAwesomeIcon :icon="['fas', isMenuOpen ? 'fa-times' : 'fa-bars']" />
 				</button>
 			</div>
 
 			<!-- Menu Items -->
 			<div :class="{ 'flex-col md:flex-row': isMenuOpen, 'hidden': !isMenuOpen }"
 				class="md:flex items-center gap-5 w-full md:w-auto md:justify-between">
-				<div class="flex flex-col md:flex-row gap-3 md:gap-5 mt-3 md:mt-0">
+				<div class="flex flex-col md:flex-row gap-3 md:gap-5 mt-3 md:mt-0 hover:underline">
 					<RouterLink v-for="link in linksLeft" :key="link.text" :to="link.link" @click="isMenuOpen = false">
 						{{ link.text }}
 					</RouterLink>
 				</div>
 				<div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-5 mt-3 md:mt-0">
-					<component v-for="item in props.linksRight" :key="item.text"
-						:is="item.link ? 'RouterLink' : 'button'" :to="item.link || null"
-						@click="item.link ? executeAction(item) : executeAction(item)"
-						class="cursor-pointer text-start">
+					<component v-for="item in props.linksRight" :key="item.text" :is="item.link ? 'RouterLink' : 'button'"
+						:to="item.link || null" @click="item.link ? executeAction(item) : executeAction(item)"
+						class="cursor-pointer text-start hover:underline">
 						{{ item.text }}
 					</component>
 					<component :is="props.button.link ? 'RouterLink' : 'button'" :to="props.button.link || null"
@@ -73,7 +73,4 @@ const executeAction = (item) => {
 		item.function();
 	}
 };
-
-
-
 </script>
