@@ -11,7 +11,7 @@
 			<template v-slot:content>
 				<div class="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
 					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
-						<img src="/images/warnings/privacy.webp" alt="Image of a drone invading a person's privacy"
+						<img src="/images/warnings/privacy.png" alt="Image of a drone invading a person's privacy"
 							class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
 						<div class="w-64">
 							<h3 class="text-2xl font-semibold mb-2">Respect other's privacy</h3>
@@ -23,7 +23,7 @@
 					</div>
 
 					<div class="guideline flex flex-col items-center text-center md:items-start md:text-left">
-						<img src="/images/warnings/airports.webp" alt="Image of a drone flying over an airport."
+						<img src="/images/warnings/airports.png" alt="Image of a drone flying over an airport."
 							class="aspect-square h-48 md:h-64 rounded-lg mb-4" />
 						<div class="w-64">
 							<h3 class="text-2xl font-semibold mb-2">Do not fly over restricted areas</h3>
