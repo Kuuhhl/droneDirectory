@@ -51,7 +51,7 @@
                         <label class="block text-gray-700 text-sm font-bold" for="password">
                             Password*
                         </label>
-                        <button v-if="password.length > 0" @click="showPassword = !showPassword"
+                        <button type="button" v-if="password.length > 0" @click="showPassword = !showPassword"
                             class="flex gap-1 items-center justify-center text-sm text-gray-700 font-bold opacity-50 hover:opacity-100 transition-opacity duration-200">
                             <FontAwesomeIcon :icon="showPassword ? 'eye' : 'eye-slash'" />
                             <span>
