@@ -16,3 +16,15 @@
     <img src="https://img.shields.io/badge/Launch-00358a?style=for-the-badge&logo=google-chrome&logoColor=white">
   </a>
 </div>
+
+# Deploy using Docker
+
+1. Navigate to the cloned repo
+2. Run `docker build -t droneDirectory .`
+3. Run `docker run droneDirectory -d`
+
+# Running locally (for development)
+
+1. Install bun `npm install -g bun`
+2. Navigate to the cloned repo and run `bun install`
+3. Run `bun run dev` to start the development server.
