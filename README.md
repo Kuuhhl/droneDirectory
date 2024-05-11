@@ -20,8 +20,8 @@
 # Deploy using Docker
 
 1. Navigate to the cloned repo
-2. Run `docker build -t droneDirectory .`
-3. Run `docker run -d droneDirectory`
+2. Run `docker build -t dronedirectory .`
+3. Run `docker run -p 80:80 -d dronedirectory`
 
 # Running locally (for development)
 
