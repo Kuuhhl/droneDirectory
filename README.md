@@ -21,7 +21,7 @@
 
 1. Navigate to the cloned repo
 2. Run `docker build -t droneDirectory .`
-3. Run `docker run droneDirectory -d`
+3. Run `docker run -d droneDirectory`
 
 # Running locally (for development)
 
