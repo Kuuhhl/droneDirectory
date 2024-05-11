@@ -17,6 +17,11 @@
   </a>
 </div>
 
+# Note
+
+When developing locally or running an instance using Docker, replace the Google Maps API key to your own one (create it [here](https://developers.google.com/maps)).
+The key I am using in my [production instance](https://dronedirectory.landmann.ph) is only valid on my domain.
+
 # Deploy using Docker
 
 1. Navigate to the cloned repo
